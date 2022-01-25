@@ -1,0 +1,126 @@
+*
+{
+	margin:  0px;
+	padding: 0px;
+}
+body
+{
+	background-color: #529BBB;
+	color:  white;
+	display: fixed;
+}
+h1
+{
+	margin: auto;
+	font-family: cursive, sans-serif;
+	font-size: xxx-large;
+	margin-top: 4%;
+	text-align: center;
+}
+.todo
+{
+	margin-top: 1%;
+	height: 20%;
+	width: auto;
+	padding-left: 31%;
+}
+.todo input[type=text]
+{
+
+	background-color: #297B6C;
+	width: 400px;
+	height: 50px;
+	outline: none;
+	border-style: hidden;
+	font-size: large;
+	color: white;
+	padding-left: 1%;
+	padding-right: 1%;
+	border-radius: 3%;
+}
+::placeholder
+{
+	color: white;
+}
+.todo input[type=text]:focus
+{
+	outline: none;
+	background-color: #1f5a4f;
+}
+.todo input[type=submit]
+{
+	background-color: #297B6C;
+	width: 80px;
+	height: 50px;
+	outline: none;
+	border-style: hidden;
+	font-size: large;
+	color: white;
+	cursor: pointer;
+	margin-left: 2%;
+	border-radius: 5%;
+}
+.todo input[type=submit]:hover,.todo input[type=submit]:focus
+{
+	background-color: #061310;
+}
+.todocontainer
+{
+	background-color: rgb(0,0,0,0.2);
+	width: 38%;
+	margin-top: 2%;
+	margin-left: 31%;
+	padding: .8% .5% .5% .5%;
+	border-radius: 2%;
+}
+.list
+{
+	background-color: #6CAAAA;
+	height: 40px;
+	padding: 1% 1% 1% 1%;
+	margin-top: 1%;
+	border-radius: 2%;
+}
+.list input[type=checkbox]
+{
+	transform: scale(1.5);
+  	margin: 2.5% 1.5%;
+}
+.list input[type=text]
+{
+	width: 77%;
+	background-color: #6CAAAA;
+	height: 25px;
+	border-style: hidden;
+	color: white;
+	font-family: fantasy;
+	font-size: large;
+}
+.list input[type=text]:focus
+{
+	outline: none;
+}
+.edit
+{
+	width: 7%;
+	height: 100%;
+	background-color: #5975BC;
+}
+.delete
+{
+	width: 7%;
+	height: 100%;
+	background-color: #D36060;
+}
+.list button
+{
+	border-style: hidden;
+	cursor: pointer;
+	border-radius: 30%;
+	margin-left: 1px;
+}
+.TaskDone
+{
+	text-decoration: line-through;
+	text-decoration-color: #D36060;
+}
