@@ -19,7 +19,7 @@ function PushValue()
 }
 function alertWithpushValue()
 {
-	//alertify.alert("Nice One...!","Task Is Added Successfully...!");
+	alertify.alert("Nice One...!","Task Is Added Successfully...!");
 	arr.push(Todoname.value);
 }
 function EditValue()
