@@ -14,18 +14,24 @@ Logical Comments: Todo Application
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="Style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
 	<title>Todo_Application</title>
 </head>
 <body id="body">
 	<h1>Todo Application With JS</h1>
 	
 	<div class="todo">
-		<input type="text" name="todo_name" id="todo_name" placeholder="Enter Your Task Name" tabindex="1"/>
-		<input type="submit" onclick="AddValue()" id="addBtn" tabindex="2" value="+ Add"/>
+		<input type="text" name="todo_name" id="todo_name" placeholder="Enter Your Task Name"/>
+		<input type="submit" onclick="AddValue()" id="addBtn" value="+ Add"/>
+		<input type="submit" onclick="DelAll()" id="DelAll" value="Clear All"/>
 	</div>
-	<div class="todocontainer" id="todocontainer">
+	
+		<div class="todocontainer" id="todocontainer">
 		
-	</div>
+		</div>
+	
 </body>
 <script type="text/javascript" src="Script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </html>
