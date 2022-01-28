@@ -65,6 +65,9 @@ h1
 }
 .todocontainer
 {
+	width: 98%;
+	height: 540px;
+	margin-left: .5%;
 	background-color: #297B6C;
 	margin-top: 2%;
 	padding: .8% .5% .5% .5%;
