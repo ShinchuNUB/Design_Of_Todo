@@ -87,7 +87,7 @@ h1
 }
 .list input[type=text]
 {
-	width: auto;
+	width: 70%;
 	background-color: #6CAAAA;
 	border-style: hidden;
 	height: auto;
