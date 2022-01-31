@@ -33,17 +33,18 @@ function justCall(index)
 }
 function displayDetails()
 {
+	let increment=0;
 	Todoname.value= "";
 	btn.value="+ Add";
 	var tag = document.getElementById("todocontainer");
 	tag.innerHTML = '';
-	for(let increment=0; increment<arr.length; increment++)
+	for(increment=0; increment<arr.length; increment++)
 	{
 		letssee(increment) > 0 && arr[increment] != undefined
 		?
 		tag.innerHTML += '<div class="list" id="list">	<input type="checkbox" id="'+increment+'" onClick="CheckTask('+increment+')" checked/> <input type="text" class="TaskDone" id="'+arr[increment]+'" value="'+arr[increment]+'" disabled />	<button class="edit" onClick="editTask('+increment+')"><i class="fa fa-edit" style="color:white; font-size: 25px;"></i></button><button class="delete" id="" onClick="justCall('+increment+')"><i class="fa fa-trash" style="color:white; font-size: 25px;"></i></button></div>'
 		: 
-		arr[increment] != undefined 
+		arr[increment] != undefined && letssee(increment) <= 0
 		?
 		tag.innerHTML += '<div class="list" id="list">	<input type="checkbox" id="'+increment+'" onClick="CheckTask('+increment+')"/> <input type="text" id="'+arr[increment]+'" value="'+arr[increment]+'" disabled />	<button class="edit" onClick="editTask('+increment+')"><i class="fa fa-edit" style="color:white; font-size: 25px;"></i></button><button class="delete" id="" onClick="justCall('+increment+')"><i class="fa fa-trash" style="color:white; font-size: 25px;"></i></button></div>'
 		:
@@ -70,8 +71,7 @@ function CheckTask(index)
 	let checkbox = document.getElementById(index);
 	let thm = document.getElementById(arr[index]);
 	checkbox.checked == true ? alertify.alert('Keep It Up...!',`Congrats...! You Done Your ${arr[index]}...!`) : "";
-	checkbox.checked == true ? thm.classList.add("TaskDone") : thm.classList.remove("TaskDone");
-	checkedarr.push(index);
+	if(checkbox.checked == true){ thm.classList.add("TaskDone"); checkedarr.push(index);}else{ thm.classList.remove("TaskDone"); checkedarr = checkedarr.filter(val => val != index)}	
 	}
 
 //For the "ENTER" keypress button event
