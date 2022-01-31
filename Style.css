@@ -14,7 +14,7 @@ h1
 	margin: auto;
 	font-family: cursive, sans-serif;
 	font-size: 300%;
-	margin-top: 4%;
+	margin-top: 3%;
 	text-align: center;
 }
 .todo
@@ -66,12 +66,11 @@ h1
 .todocontainer
 {
 	width: 98%;
-	height: 540px;
+	height: 500px;
 	margin-left: .5%;
 	background-color: #297B6C;
-	margin-top: 2%;
+	margin-top: 1%;
 	padding: .8% .5% .5% .5%;
-	border-radius: 2%;
 	overflow-y: auto;
 }
 .list
@@ -143,4 +142,32 @@ h1
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(0, 0, 0, 0.2); 
+  }
+  .DeleteButton
+  {
+	width: 98%;
+	margin-left: .5%;
+	background-color: #297B6C;
+	padding: .8% .5% .5% .5%;
+	border-radius: 2%;
+	text-align: center;
+  }
+  .DeleteButton input[type=submit]
+  {
+	background-color: #3c8577;
+	width: auto;
+	height: 50px;
+	outline: none;
+	border-style: hidden;
+	font-size: large;
+	color: white;
+	cursor: pointer;
+	margin-left: 2%;
+	padding: 1%;
+	border-radius: 5%;
+  }
+  .DeleteButton input[type=submit]:hover
+  {
+	background-color: #2d685c;
+	outline: none;  
   }

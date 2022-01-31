@@ -8,19 +8,16 @@ let btn = document.getElementById("addBtn");
 
 function AddValue()
 {
+	
+	Todoname.blur();
 	isFromEdit == 0 ? PushValue() : EditValue();
 	Todoname.value="";
 	displayDetails();
 }
 function PushValue()
 {	
-	Todoname.value.trim() == "" ? alertify.alert("TextBox Is Empty...!","Sorry..! You Have To Enter Task In Box..!") : alertWithpushValue();
+	Todoname.value.trim() == "" ? alertify.alert("TextBox Is Empty...!","Sorry..! You Have To Enter Task In Box..!") : arr.push(Todoname.value);
 
-}
-function alertWithpushValue()
-{
-	alertify.alert("Nice One...!","Task Is Added Successfully...!");
-	arr.push(Todoname.value);
 }
 function EditValue()
 {
@@ -53,6 +50,7 @@ function displayDetails()
 		tag.innerHTML += "";
 		;
 	}
+	if(tag.innerHTML == ""){ tag.innerHTML = "<h1>No Tasks</h1>"};
 }
 function letssee(index)
 {
