@@ -111,7 +111,11 @@ function taskDone(index)
 }
 function alreadyDone(index)
 {
-	listofdonetask = JSON.parse(localStorage.getItem('listofdonetask'));
+	if (localStorage.getItem('listofdonetask') === null) {
+		listofdonetask = [];
+	} else {
+		listofdonetask = JSON.parse(localStorage.getItem('listofdonetask'));
+	}
 	for(let i=0; i<listofdonetask.length; i++)
 	{
 		if(titlearr[index] == listofdonetask[i])
