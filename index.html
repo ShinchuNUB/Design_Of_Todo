@@ -7,7 +7,7 @@ Modified Date: -
 Logical Comments: Todo Application
 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,21 +16,18 @@ Logical Comments: Todo Application
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+	
 	<title>Todo_Application</title>
 </head>
-<body id="body">
-	<h1>Todo Application With JS</h1>
+<body id="body" onload="displayDetails()">
+	<div class="gettinginfo">
+		<div class="fortitle"><input type="text" id="title" class="title" placeholder="Enter Task Title Here..!" onfocusout="AddValue()"/></div>
+		<div class="fortask"><textarea placeholder="Enter Your Task Here..! " id="textarea" onfocusout="AddValue()"></textarea></div>
+	</div>
+	<div class="container" id="container">
+	  
+	</div>
 	
-	<div class="todo">
-		<input type="text" name="todo_name" id="todo_name" placeholder="Enter Your Task Name"/>
-		<input type="submit" onclick="AddValue()" id="addBtn" value="+ Add"/>
-	</div>
-	<div class="todocontainer" id="todocontainer">
-		<h1>No Tasks</h1>
-	</div>
-	<div class="DeleteButton">
-	<input type="submit" onclick="DelAll()" id="DelAll" value="Clear All"/>
-	</div>
 </body>
 <script type="text/javascript" src="Script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>

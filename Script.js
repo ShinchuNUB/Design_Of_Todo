@@ -1,63 +1,127 @@
-let arr = [undefined];
-let checkedarr = [];
-let cnt = 0;
+let titlearr = [];
+let taskarr = [];
+let listofdonetask = [];
 let isFromEdit = 0;
-let GlobalIndex = -1;
-var Todoname = document.getElementById("todo_name");
-let btn = document.getElementById("addBtn");
+var title = document.getElementById("title");
+var textarea = document.getElementById("textarea");
+title.focus();
+
 
 function AddValue()
 {
-	
-	Todoname.blur();
+	alertify.set('notifier','position', 'top-center');
+	title.value.trim() == "" 
+	? 
+	title.focus()
+	:
+	textarea.value.trim() == ""
+	?
+	textarea.focus()
+	:
 	isFromEdit == 0 ? PushValue() : EditValue();
-	Todoname.value="";
-	displayDetails();
 }
+
 function PushValue()
 {	
-	Todoname.value.trim() == "" ? alertify.alert("TextBox Is Empty...!","Sorry..! You Have To Enter Task In Box..!") : arr.push(Todoname.value);
-
-}
+	
+	if (localStorage.getItem('tasklist') === null) {
+		titlearr = [];
+		taskarr = [];
+		listofdonetask = [];
+	} else {
+		titlearr = JSON.parse(localStorage.getItem('titlelist'));
+		taskarr = JSON.parse(localStorage.getItem('tasklist'));
+	}
+	
+	titlearr.push(title.value);
+	taskarr.push(textarea.value);
+		
+	localStorage.setItem('titlelist',JSON.stringify(titlearr));
+	localStorage.setItem('tasklist', JSON.stringify(taskarr));
+	
+	title.value = "";
+	textarea.style.height = "";
+	textarea.value = "";
+		
+	displayDetails();
+}/*
 function EditValue()
 {
 	arr[GlobalIndex] = Todoname.value;
 	alertify.alert("Changes May Applied...!","Your Task Is Updated Successfuly...!");
 	btn.value = "+ Add";
 	isFromEdit = 0;
-}
-function justCall(index)
+}*/
+function justcall(index)
 {
-	alertify.confirm('Deleting Task...!',`Are you Sure You Want To Delete ${arr[index]}..?`, function(){ arr[index]=undefined; displayDetails()}
-	, function(){ "" });
+	if(confirm(`Removing Task...! Are you Sure You Want To Remove ${titlearr[index]}..?`))
+	{
+		listofdonetask = listofdonetask.filter(val => val != titlearr[index]);
+		delete titlearr[index];
+		delete taskarr[index];
+		
+		localStorage.setItem('titlelist',JSON.stringify(titlearr));
+		localStorage.setItem('tasklist', JSON.stringify(taskarr));
+		localStorage.setItem('listofdonetask',JSON.stringify(listofdonetask));
+	
+		alertify.success("Task Removed...!");
+		displayDetails();
+	}
 }
 function displayDetails()
 {
-	let increment=0;
-	Todoname.value= "";
-	btn.value="+ Add";
-	var tag = document.getElementById("todocontainer");
-	tag.innerHTML = '';
-	for(increment=0; increment<arr.length; increment++)
+
+
+	titlearr = JSON.parse(localStorage.getItem('titlelist'));
+	taskarr = JSON.parse(localStorage.getItem('tasklist'));
+	if(localStorage.getItem('listofdonetask') !== null)
 	{
-		letssee(increment) > 0 && arr[increment] != undefined
-		?
-		tag.innerHTML += '<div class="list" id="list">	<input type="checkbox" id="'+increment+'" onClick="CheckTask('+increment+')" checked/> <input type="text" class="TaskDone" id="'+arr[increment]+'" value="'+arr[increment]+'" disabled />	<button class="edit" onClick="editTask('+increment+')"><i class="fa fa-edit" style="color:white; font-size: 25px;"></i></button><button class="delete" id="" onClick="justCall('+increment+')"><i class="fa fa-trash" style="color:white; font-size: 25px;"></i></button></div>'
-		: 
-		arr[increment] != undefined && letssee(increment) <= 0
-		?
-		tag.innerHTML += '<div class="list" id="list">	<input type="checkbox" id="'+increment+'" onClick="CheckTask('+increment+')"/> <input type="text" id="'+arr[increment]+'" value="'+arr[increment]+'" disabled />	<button class="edit" onClick="editTask('+increment+')"><i class="fa fa-edit" style="color:white; font-size: 25px;"></i></button><button class="delete" id="" onClick="justCall('+increment+')"><i class="fa fa-trash" style="color:white; font-size: 25px;"></i></button></div>'
-		:
-		tag.innerHTML += "";
-		;
+	listofdonetask = JSON.parse(localStorage.getItem('listofdonetask'));
+	listofdonetask = listofdonetask.filter(val => val != null);
 	}
-	if(tag.innerHTML == ""){ tag.innerHTML = "<h1>No Tasks</h1>"};
+	taskarr = taskarr.filter(val => val != null);
+	titlearr = titlearr.filter(val => val != null);
+	
+
+	var tag = document.getElementById("container");
+	tag.innerHTML = '';
+
+	for(increment=titlearr.length-1; increment>=0; increment--)
+	{
+		tag.innerHTML += 
+		`<div class="card"> <div class="box" id="box${increment}" > <div class="content">  <h3>${titlearr[increment]}</h3> <p> ${taskarr[increment]}</p>	<button id="${increment}" onClick="taskDone(${increment})">Done</button> <button id="${increment}" onClick="justcall(${increment})">Delete</button></div> </div> </div>`
+		alreadyDone(increment);
+	}
+	title.focus();
 }
-function letssee(index)
+
+function taskDone(index)
 {
-	cnt = 0;
-	return checkedarr.filter(val => val == index, cnt++);
+	if (localStorage.getItem('listofdonetask') === null) {
+		listofdonetask = [];
+	} else {
+		listofdonetask = JSON.parse(localStorage.getItem('listofdonetask'));
+	}
+
+	listofdonetask.push(titlearr[index]);
+	var getingBox = document.getElementById(`box${index}`);
+	getingBox.style.background = "rgb(48, 87, 128)";		
+	localStorage.setItem('listofdonetask',JSON.stringify(listofdonetask));
+
 }
+function alreadyDone(index)
+{
+	listofdonetask = JSON.parse(localStorage.getItem('listofdonetask'));
+	for(let i=0; i<listofdonetask.length; i++)
+	{
+		if(titlearr[index] == listofdonetask[i])
+		{
+			var getingBox = document.getElementById(`box${index}`);
+			getingBox.style.background = "rgb(48, 87, 128)";
+		}
+	}
+}
+/*
 function editTask(index)
 {
 	isFromEdit = 1;
@@ -86,3 +150,12 @@ function DelAll()
 {
 	location.reload();
 }
+function focusontxtbx()
+{
+	Todoname.focus();
+}*/
+textarea.oninput = function() {
+  textarea.style.height = "";
+  /* textarea.style.height = Math.min(textarea.scrollHeight, 300) + "px"; */
+textarea.style.height = textarea.scrollHeight + "px"
+};

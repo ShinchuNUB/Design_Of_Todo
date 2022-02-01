@@ -1,132 +1,146 @@
-*
-{
-	margin:  0%;
-	padding: 0%;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-body
-{
-	background-color: #529BBB;
-	color:  white;
-	
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  background: #272523;
 }
-h1
+body .gettinginfo
 {
-	margin: auto;
-	font-family: cursive, sans-serif;
-	font-size: 300%;
+	width: 80%;
+}
+.fortitle, .fortask
+{
+	width: 100%;
 	margin-top: 3%;
 	text-align: center;
 }
-.todo
+body .gettinginfo textarea, .title
 {
-	margin-top: 1%;
-	height: 20%;
-	text-align: center;
-}
-.todo input[type=text]
-{
-	background-color: #297B6C;
-	width: auto;
-	height: 50px;
-	outline: none;
-	border-style: hidden;
+	width: 20rem;
+	height: 30px;
+	max-height: 300px;
+	padding-left: .3%;
+	resize: none;
 	font-size: large;
+	background: #232427;
 	color: white;
-	padding-left: 1%;
-	padding-right: 1%;
-	border-radius: 3%;
-}
-::placeholder
-{
-	color: white;
-}
-.todo input[type=text]:focus
-{
 	outline: none;
-	background-color: #1f5a4f;
+	border: none;
+	border-bottom: 1px groove;
 }
-.todo input[type=submit]
+body .gettinginfo textarea:focus, .title:focus
 {
-	background-color: #297B6C;
-	width: auto;
-	height: 50px;
-	outline: none;
-	border-style: hidden;
-	font-size: large;
-	color: white;
-	cursor: pointer;
-	margin-left: 2%;
-	padding: 1%;
-	border-radius: 5%;
+	border-bottom: 1px solid white;
 }
-.todo input[type=submit]:hover,.todo input[type=submit]:focus
-{
-	background-color: #061310;
+body .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 40px 0;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
-.todocontainer
-{
-	width: 98%;
-	height: 500px;
-	margin-left: .5%;
-	background-color: #297B6C;
-	margin-top: 1%;
-	padding: .8% .5% .5% .5%;
-	overflow-y: auto;
+
+body .container .card {
+  position: relative;
+  min-width: 320px;
+  height: 440px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  margin: 30px;
+  transition: 0.5s;
 }
-.list
-{
-	width: auto;
-	height: 50px;
-	background-color: #6CAAAA;
-	border-radius: 2%;
+
+body .container .card .box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #2a2b2f;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.5s;
 }
-.list input[type=checkbox]
-{
-	transform: scale(1.5);
-	margin: 1.2% 1.2%;
+
+
+body .container .card .box:hover {
+  transform: translateY(-50px);
 }
-.list input[type=text]
-{
-	width: 70%;
-	background-color: #6CAAAA;
-	border-style: hidden;
-	height: auto;
-	margin-top: 2vh;
-	color: white;
-	font-family: fantasy;
-	font-size: large;
+
+body .container .card .box:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
 }
-.list input[type=text]:focus
-{
-	outline: none;
+
+body .container .card .box .content {
+  padding: 20px;
+  text-align: center;
 }
-.edit
-{
-	width: auto;
-	padding: 1vh;
-	background-color: #5975BC;
-	float: right;
-	margin-top: .5vh;
+
+body .container .card .box .content h2 {
+  position: absolute;
+  top: -10px;
+  right: 30px;
+  font-size: 8rem;
+  color: rgba(255, 255, 255, 0.1);
 }
-.delete
-{
-	width: auto;
-	padding: 1vh;
-	background-color: #D36060;
-	float: right;
-	margin-top: .5vh;
+
+body .container .card .box .content h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  z-index: 1;
+  transition: 0.5s;
+  margin-bottom: 15px;
 }
-.list button
-{
-	border-style: hidden;
-	cursor: pointer;
-	border-radius: 30%;
-	margin-left: 1px;
+
+body .container .card .box .content p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  transition: 0.5s;
 }
-.TaskDone
-{
-	text-decoration: line-through;
-	text-decoration-color: #D36060;
+
+body .container .card .box .content button {
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  background: black;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  margin-top: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+body .container .card .box .content button:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  color: #000;
 }
 
 ::-webkit-scrollbar {
@@ -134,40 +148,12 @@ h1
   }
   
   /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #1f5a4f; 
-    border-radius: 10px;
+  ::-webkit-scrollbar-thumb { 
+	background: gray;
+    border-radius: 10px; 
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(0, 0, 0, 0.2); 
-  }
-  .DeleteButton
-  {
-	width: 98%;
-	margin-left: .5%;
-	background-color: #297B6C;
-	padding: .8% .5% .5% .5%;
-	border-radius: 2%;
-	text-align: center;
-  }
-  .DeleteButton input[type=submit]
-  {
-	background-color: #3c8577;
-	width: auto;
-	height: 50px;
-	outline: none;
-	border-style: hidden;
-	font-size: large;
-	color: white;
-	cursor: pointer;
-	margin-left: 2%;
-	padding: 1%;
-	border-radius: 5%;
-  }
-  .DeleteButton input[type=submit]:hover
-  {
-	background-color: #2d685c;
-	outline: none;  
-  }
+	background: rgb(161, 161, 161);
+}
