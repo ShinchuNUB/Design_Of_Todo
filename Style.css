@@ -18,13 +18,17 @@ body .gettinginfo
 {
 	width: 80%;
 }
-.fortitle, .fortask
+.fortitle, .fortask, .forbutton
 {
 	width: 100%;
 	margin-top: 3%;
 	text-align: center;
 }
-body .gettinginfo textarea, .title
+.forbutton
+{
+  margin-top: 1%;
+}
+body .gettinginfo textarea, .title, .button
 {
 	width: 20rem;
 	height: 30px;
@@ -38,10 +42,20 @@ body .gettinginfo textarea, .title
 	border: none;
 	border-bottom: 1px groove;
 }
+body .gettinginfo  .button
+{
+  border-top: 1px groove;
+}
+body .gettinginfo  .button:hover
+{
+  background-color: white;
+  color: #000;
+}
 body .gettinginfo textarea:focus, .title:focus
 {
 	border-bottom: 1px solid white;
 }
+
 body .container {
   display: flex;
   justify-content: center;
@@ -49,7 +63,8 @@ body .container {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 40px 0;
-  max-height: 600px;
+  min-height: 300px;
+  max-height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
 }
